@@ -1,0 +1,23 @@
+{
+    "name": "grasses/jue-php-sdk",
+    "description":"Jue Resource SDK for PHP",
+    "keywords":["oauth","oauth2","jue"],
+    "type":"library",
+    "license":"MIT",
+    "authors":[
+    {
+        "name":"homeway",
+        "email": "xiaocao.grasses@gmail.com",
+        "homepage":"http://homeway.me"
+    }
+    ],
+    "homepage": "https://github.com/grasses/Jue-php-sdk",
+    "require":{
+        "php":">=5.3.9"
+    },
+    "autoload": {
+        "psr-0": { "Jue": "src/" }
+    },
+    "suggest": {
+    }
+}
