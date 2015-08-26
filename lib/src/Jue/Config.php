@@ -15,18 +15,6 @@ if (version_compare(PHP_VERSION, '5.9.0', '<')) {
 }
 
 final class Config{
-	/*
-		const SDK_VERSION 	= "15.07.09";
-		const ACCESS_KEY  	= "testclient";
-		const ACCESS_SECRET = "testpass";
-		const API_HOST 		= "api.jue.so";
-		const API_OAUTH 	= "http://api.jue.so/oauth2";
-		const API_RESOURCE 	= "http://api.jue.so/v2";
-
-		const REDIRCET_URI  = "http://homeway.me/";
-		const USER_NAME 	= "user";
-		const USER_PASS		= "pass";
-	*/
 		const SDK_VERSION 	= "15.07.09";
 		const ACCESS_KEY  	= "testclient";
 		const ACCESS_SECRET = "testpass";
