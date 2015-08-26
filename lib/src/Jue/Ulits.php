@@ -4,9 +4,6 @@ namespace Jue;
 
 use Jue\Config;
 
-//if (!defined('QINIU_public static FUNCTIONS_VERSION')) {
-//    define('QINIU_public static FUNCTIONS_VERSION', Config::SDK_VER);
-
 final class Ulits{
    /**
      * 计算文件的crc32检验码:
@@ -101,23 +98,5 @@ final class Ulits{
         }
 
         return $data;
-    }
-
-   /**
-     * 计算七牛API中的数据格式
-     *
-     * @param $bucket 待操作的空间名
-     * @param $key 待操作的文件名
-     *
-     * @return 符合七牛API规格的数据格式
-     * @link http://developer.qiniu.com/docs/v6/api/reference/data-formats.html
-     */
-    public static function entry($bucket, $key)
-    {
-        $en = $bucket;
-        if (!empty($key)) {
-            $en = $bucket . ':' . $key;
-        }
-        return base64_urlSafeEncode($en);
     }
 }
