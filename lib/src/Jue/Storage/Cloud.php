@@ -11,6 +11,7 @@ namespace Jue\Storage;
 
 use Jue;
 use Jue\Config;
+use Jue\Auth\Token;
 use Jue\Http\Client;
 
 class Cloud implements CloudInterface{
@@ -19,12 +20,14 @@ class Cloud implements CloudInterface{
 		$this->access_token = $TokenClass->get_access_token();
 	}
 
-	public function get_upload_token($uuid){
+	public function get_upload_token($uuid, $parent=""){
 		$data = array(
 			"access_token" => $this->access_token, 
+			"client_id" => Config::ACCESS_KEY,
 			"uuid" => $uuid,
+			"parent" => $parent
 		);
-		$url = Config::API_RESOURCE."/secret/get_upload_token";
+		$url = Config::API_RESOURCE."/cloud/get_upload_token";
 		$response = Client::post($url, $data, array("Content-Type" => "application/x-www-form-urlencoded"));
 		return $this->do_result($response);
 	}
@@ -36,7 +39,7 @@ class Cloud implements CloudInterface{
 			"fid" => $fid
 		);
 		$url = Config::API_RESOURCE."/secret/get_download_url";
-		$response = Client::post($url, $data, array("Content-Type" => "application/x-www-form-urlencoded"));
+		$response = Client::post($url, $data, array());
 		return $this->do_result($response);	
 	}
 

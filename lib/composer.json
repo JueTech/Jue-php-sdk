@@ -11,7 +11,7 @@
         "homepage":"http://homeway.me"
     }
     ],
-    "homepage": "https://github.com/grasses/Jue-php-sdk",
+    "homepage": "https://github.com/JueTech/Jue-php-sdk",
     "require":{
         "php":">=5.3.9"
     },

@@ -20,7 +20,7 @@ $server = new Server($app_key, $app_secret);
 $oauth_type_client_credentials = $server->auth()->get_access_token("client_credentials");
 $oauth_type_password = $server->auth()->get_access_token("password");
 
-$data = $server->secret()->portal("21", "api.jue.so", md5(time()));
+$data = $server->secret()->portal("1", "api.jue.so", md5(time()));
 
 print_r($data);
 

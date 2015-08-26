@@ -1,0 +1,102 @@
+body{width:100%; height:100%;font-family:Arial, "微软雅黑"; font-size:12px; color:#333333; background:#f9f8f2;text-shadow: 0px 1px 0px rgba(255,255,255, .6);}
+.red{color: red;}
+
+.top{background:url(/static/img/top.png) repeat; overflow:hidden;}
+.top{width:100%;height:100px; margin-top:0px; padding:0px;overflow:hidden;}
+.top .top-left img{margin-left: 3em; height: 80%; width: auto;}
+.top .top-right .navigation{ display:block; width:500px; padding-left:0px; height:30px; background:url(/static/img/top_nav.png) no-repeat;}
+.top .top-right .navigation ul{ list-style-type:none; margin:0px; padding:0px; width: 500px;}
+.top .top-right .navigation ul li{ display:inline; float:left; height:30px; line-height:30px; padding:0px 10px;}
+.top .top-right .navigation ul li a{ color:#363636;}
+.top .top-right .navigation ul li a:hover{ color:#c94040; text-decoration:underline;}
+.top .top-right .user{ display:block; width:300px; height:30px;line-height:30px;text-align:center;color:#bfb4a1; font-size:12px;text-shadow: 1px 1px 0px rgba(0,0,0,0.9);}
+
+.wrapper{width: 100%; height: 100%;}
+/* 外层menu */
+.wrapper .left{height: 100%; width: 13%;}
+.wrapper .left .menu {background:url(/static/img/body0.jpg) repeat; height: 800px; width: 100%; float: left;}
+.wrapper .left .menu .out, .wrapper .left .menu .out ul, .wrapper .left .menu .out li, .wrapper .left .menu .out a{ z-index:2; margin:0; padding:0; border:none; outline:none;}
+.wrapper .left .menu .out li{ list-style:none;}
+.wrapper .left .menu .out li a{ display:block;min-width:110px;padding:0 10px 0 50px; height:40px;color:#f9f8f2;font: bold 14px/40px Arial, sans-serif;text-decoration: none;text-shadow: 0px 2px 1px rgba(60,60,60, .55);
+background:url(/static/img/top.png) repeat;border-bottom:1px dashed #666666; position:relative;}
+.wrapper .left .menu .out li:target a, .wrapper .left .menu .out li a.active{color: #333333;text-shadow: 0px 1px 0px rgba(255,255,255, .6);background:url(/static/img/bg_hover.png) repeat;}
+.wrapper .left .menu .out li a:before{position: absolute;top: 0;left: 0;content: '';width: 24px;height: 24px;margin: 4px 8px;}
+
+/* 内层menu */
+.wrapper .left .menu .out li .in li a{
+	color: #393939;padding: 0 10px 0 60px;text-shadow: 0px 1px 1px rgba(255,255,255,0.5);font-weight:normal;
+	font-size:12px;background:url(/static/img/body0.jpg) repeat;border-bottom: 1px dashed #ddd8b0;
+	-webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 1px 0px rgba(0,0,0, .3);
+	-moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 1px 0px rgba(0,0,0, .3);
+	box-shadow: inset 0px 1px 0px 0px rgba(255,255,255, .1), 0px 1px 1px 0px rgba(0,0,0, .3);
+}
+.wrapper .left .menu .out li .in li:hover a{background:url(/static/img/body0.jpg) repeat;}
+.wrapper .left .menu .out li .in li a:hover{background:#ede9ce; color:#333333;}
+.wrapper .left .menu .out li .in li:last-child a{border: none;}
+.wrapper .left .menu .out li .in { display:block;}
+
+.wrapper .right {width: 100%;}
+.wrapper .right .widget {display:inline;}
+.wrapper .right .widget ul {z-index:1; width: 100%; list-style-type: none; background:url(/static/img/body0.jpg) repeat; }
+.wrapper .right .widget ul li{ font-size: 1.2em; margin: 1em 1.2em;}
+.wrapper .right .widget ul .utility:hover{border: 0.2em dashed #ddd8b0;}
+.wrapper .right .widget ul .type{ margin: 1em 0px;} 
+
+/* baidu icon */
+.global-icon-16{display:inline-block;width:26px;height:22px;background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/sprite_list_icon.gif?t=1430995024773) 9999px 9999px no-repeat;background-position:-421px -83px}
+.global-icon-16-multi{background-position:-43px -27px}
+.global-icon-16-shouchang{background-position:-202px -3px}
+.global-icon-16-yingyong_child,.global-icon-16-yingyong{background-position:-43px -3px}
+.global-icon-16-beifen{background-position:-121px -3px}
+.global-icon-16-doc,.global-icon-16-docx{background-position:-101px -83px}
+.global-icon-16-xls,.global-icon-16-xlsx{background-position:-133px -83px}
+.global-icon-16-ppt,.global-icon-16-pptx{background-position:-261px -83px}
+.global-icon-16-vsd{background-position:-37px -83px}
+.global-icon-16-pdf{background-position:-69px -83px}
+.global-icon-16-apk{background-position:-389px -83px}
+.global-icon-16-dws,.global-icon-16-dwt,.global-icon-16-dxf,.global-icon-16-dwg{background-position:-6px -105px}
+.global-icon-16-mmap{background-position:-37px -106px}
+.global-icon-16-xmind{background-position:-69px -106px}
+.global-icon-16-mm{background-position:-69px -106px}
+.global-icon-16-exe,.global-icon-16-msi,.global-icon-16-dmg{background-position:-325px -83px}
+.global-icon-16-ipa{background-position:-293px -83px}
+.global-icon-16-zip,.global-icon-16-rar{background-position:-357px -83px}
+.global-icon-16-psd{background-position:-517px -83px}
+.global-icon-16-key{background-position:-550px -83px}.global-icon-16-ai{background-position:-583px -83px}
+.global-icon-16-txt{background-position:-165px -83px}.global-icon-16-torrent{background-position:-453px -83px}
+.global-icon-16-dir{background-position:-5px -3px}.global-icon-16-jpg,.global-icon-16-jpeg,.global-icon-16-gif,.global-icon-16-bmp,.global-icon-16-png,.global-icon-16-jpe,.global-icon-16-cur,.global-icon-16-svg,.global-icon-16-svgz,.global-icon-16-tif,.global-icon-16-tiff,.global-icon-16-ico{background-position:-5px -83px}
+.global-icon-16-wma,.global-icon-16-wav,.global-icon-16-mp3,.global-icon-16-aac,.global-icon-16-ra,.global-icon-16-ram,.global-icon-16-mp2,.global-icon-16-ogg,.global-icon-16-aif,.global-icon-16-mpega,.global-icon-16-amr,.global-icon-16-mid,.global-icon-16-midi,.global-icon-16-m4a{background-position:-197px -83px}
+.global-icon-16-wmv,.global-icon-16-rmvb,.global-icon-16-mpeg4,.global-icon-16-mpeg2,.global-icon-16-flv,.global-icon-16-avi,.global-icon-16-3gp,.global-icon-16-mpga,.global-icon-16-qt,.global-icon-16-rm,.global-icon-16-wmz,.global-icon-16-wmd,.global-icon-16-wvx,.global-icon-16-wmx,.global-icon-16-wm,.global-icon-16-swf,.global-icon-16-mpg,.global-icon-16-mp4,.global-icon-16-mkv,.global-icon-16-mpeg,.global-icon-16-mov,.global-icon-16-asf{background-position:-229px -83px}.global-icon-30{display:inline-block;width:30px;height:30px;background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/sprite_list_icon30.png?t=1430995024773) 9999px 9999px no-repeat;background-position:-560px 0}.global-icon-30-multi{background-position:-280px -50px}
+.global-icon-30-shouchang{background-position:-80px -100px}
+.global-icon-30-yingyong_child,.global-icon-30-yingyong{background-position:-2px -100px}
+.global-icon-30-beifen{}.global-icon-30-doc,.global-icon-30-docx{background-position:-80px 0}
+.global-icon-30-xls,.global-icon-30-xlsx{background-position:-120px 0}.global-icon-30-ppt,.global-icon-30-pptx{background-position:-280px 0}
+.global-icon-30-vsd{background-position:0 0}.global-icon-30-pdf{background-position:-40px 0}
+.global-icon-30-apk{background-position:-400px 0}
+.global-icon-30-dws,.global-icon-30-dwt,.global-icon-30-dxf,.global-icon-30-dwg{background-position:-160px -50px}
+.global-icon-30-mmap{background-position:-160px -50px}
+.global-icon-30-xmind{background-position:-200px -50px}
+.global-icon-30-mm{background-position:-200px -50px}
+.global-icon-30-exe,.global-icon-30-msi,.global-icon-30-dmg{background-position:-360px 0}
+.global-icon-30-ipa{background-position:-320px 0}
+.global-icon-30-zip,.global-icon-30-rar{background-position:-40px -50px}
+.global-icon-30-psd{background-position:-520px 0}
+.global-icon-30-key{}.global-icon-30-ai{background-position:-520px 0}.global-icon-30-txt{background-position:-160px 0}
+.global-icon-30-torrent{background-position:-440px 0}
+.global-icon-30-dir{background-position:-202px -100px}.global-icon-30-jpg,.global-icon-30-jpeg,.global-icon-30-gif,.global-icon-30-bmp,.global-icon-30-png,.global-icon-30-jpe,.global-icon-30-cur,.global-icon-30-svg,.global-icon-30-svgz,.global-icon-30-tif,.global-icon-30-tiff,.global-icon-30-ico{background-position:0 -50px}
+.global-icon-30-wma,.global-icon-30-wav,.global-icon-30-mp3,.global-icon-30-aac,.global-icon-30-ra,.global-icon-30-ram,.global-icon-30-mp2,.global-icon-30-ogg,.global-icon-30-aif,.global-icon-30-mpega,.global-icon-30-amr,.global-icon-30-mid,.global-icon-30-midi,.global-icon-30-m4a{background-position:-200px 0}
+.global-icon-30-wmv,.global-icon-30-rmvb,.global-icon-30-mpeg4,.global-icon-30-mpeg2,.global-icon-30-flv,.global-icon-30-avi,.global-icon-30-3gp,.global-icon-30-mpga,.global-icon-30-qt,.global-icon-30-rm,.global-icon-30-wmz,.global-icon-30-wmd,.global-icon-30-wvx,.global-icon-30-wmx,.global-icon-30-wm,.global-icon-30-swf,.global-icon-30-mpg,.global-icon-30-mp4,.global-icon-30-mkv,.global-icon-30-mpeg,.global-icon-30-mov,.global-icon-30-asf{background-position:-240px 0}
+.global-icon-62{display:inline-block;width:92px;height:92px;background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/property_icon_101.png?t=1430995024773) 9999px 9999px no-repeat;background-position:-0px -0px}
+.global-icon-62-multi{}.global-icon-62-shouchang{background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/spritenew-f.gif?t=1430995024773) 9999px 9999px no-repeat;background-position:-820px 0}
+.global-icon-62-yingyong_child,.global-icon-62-yingyong{background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/spritenew-f.gif?t=1430995024773) 9999px 9999px no-repeat;background-position:-182px 0}
+.global-icon-62-beifen{background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/spritenew-f.gif?t=1430995024773) 9999px 9999px no-repeat;background-position:-339px 0}
+.global-icon-62-doc,.global-icon-62-docx{background-position:-462px -0px}
+.global-icon-62-xls,.global-icon-62-xlsx{background-position:-308px -0px}.global-icon-62-ppt,.global-icon-62-pptx{background-position:-616px -0px}.global-icon-62-vsd{background-position:-770px -0px}
+.global-icon-62-pdf{background-position:-924px -0px}.global-icon-62-apk{background-position:-1225px -0px}.global-icon-62-dws,.global-icon-62-dwt,.global-icon-62-dxf,.global-icon-62-dwg{background-position:0 -117px}
+.global-icon-62-mmap{background-position:-153px -117px}.global-icon-62-xmind{background-position:-306px -117px}.global-icon-62-mm{background-position:-460px -117px}.global-icon-62-exe,.global-icon-62-msi{background-position:-1378px -0px}
+.global-icon-62-dmg{background-position:-2602px -0px}.global-icon-62-ipa{background-position:-1540px -0px}.global-icon-62-zip{background-position:-154px -0px}.global-icon-62-rar{background-position:-2142px -0px}
+.global-icon-62-psd{background-position:-2294px -0px}.global-icon-62-key{background-position:-2447px -0px}.global-icon-62-ai{background-position:-2753px -0px}.global-icon-62-txt{background-position:-1072px -0px}
+.global-icon-62-torrent{background-position:-1990px -0px}.global-icon-62-dir{background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/spritenew-f.gif?t=1430995024773) 9999px 9999px no-repeat;background-position:-24px 0}
+.global-icon-62-jpg,.global-icon-62-jpeg,.global-icon-62-gif,.global-icon-62-bmp,.global-icon-62-png,.global-icon-62-jpe,.global-icon-62-cur,.global-icon-62-svg,.global-icon-62-svgz,.global-icon-62-tif,.global-icon-62-tiff,.global-icon-62-ico{}.global-icon-62-wma,.global-icon-62-wav,.global-icon-62-mp3,.global-icon-62-aac,.global-icon-62-ra,.global-icon-62-ram,.global-icon-62-mp2,.global-icon-62-ogg,.global-icon-62-aif,.global-icon-62-mpega,.global-icon-62-amr,.global-icon-62-mid,.global-icon-62-midi,.global-icon-62-m4a{background-position:-1836px -0px}
+.global-icon-62-wmv,.global-icon-62-rmvb,.global-icon-62-mpeg4,.global-icon-62-mpeg2,.global-icon-62-flv,.global-icon-62-avi,.global-icon-62-3gp,.global-icon-62-mpga,.global-icon-62-qt,.global-icon-62-rm,.global-icon-62-wmz,.global-icon-62-wmd,.global-icon-62-wvx,.global-icon-62-wmx,.global-icon-62-wm,.global-icon-62-swf,.global-icon-62-mpg,.global-icon-62-mp4,.global-icon-62-mkv,.global-icon-62-mpeg,.global-icon-62-mov,.global-icon-62-asf{background-position:-1685px -0px}.global-icon-62-multi{background-position:-2902px -2px}.global-icon-transfer,.global-icon-download,.global-icon-videoplay-save,.global-icon-delete,.global-icon-share-cancel,.global-icon-share-qr,.global-icon-checkbox{display:inline-block;width:20px;height:20px;background:url(http://s1.pan.bdstatic.com/yun-static/common-cdn/images/clouddisk-ui/btn_icon.gif?t=1430995024773) no-repeat;background-position:-421px -83px}.global-icon-transfer{background-position:-207px -299px}.global-icon-transfer:hover{background-position:-181px -153px}.global-icon-download{background-position:-208px -210px}.global-icon-download:hover{background-position:-182px -39px}.global-icon-share-cancel{background-position:-158px -254px}.global-icon-share-cancel:hover{background-position:-179px -254px}.global-icon-share-qr{background-position:-208px -441px}
+.global-icon-share-qr:hover{background-position:-230px -441px}.global-icon-delete{background-position:-205px -276px}.global-icon-delete:hover{background-position:-179px -130px}.global-icon-checkbox{width:14px;height:14px;line-height:14px;font-size:0;zoom:1;background-position:-113px 0}.on .global-icon-checkbox{background-position:-113px -19px}

@@ -15,6 +15,7 @@ use Jue\Storage\File;
 use Jue\Storage\Node;
 use Jue\Storage\User;
 use Jue\Storage\Secret;
+use Jue\Storage\Cloud;
 use Jue\Auth\Auth;
 
 class Server{
@@ -50,5 +51,10 @@ class Server{
 	public function secret(){
 		if(!isset($this->secret)) $this->secret = new Secret();
 		return $this->secret;
+	}
+
+	public function cloud(){
+		if(!isset($this->cloud)) $this->cloud = new Cloud();
+		return $this->cloud;
 	}
 }
