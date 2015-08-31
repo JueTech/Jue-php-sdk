@@ -7,17 +7,17 @@
 * @version     15.07.17
 **/
  
-namespace Jue\Storage;
+namespace Jue\Depot;
 
 use Jue;
 use Jue\Config;
 use Jue\Auth\Token;
 use Jue\Http\Client;
+use Jue\Storage\Memory;
 
 class Cloud implements CloudInterface{
 	function __construct(){
-		$TokenClass = new Token();
-		$this->access_token = $TokenClass->get_access_token();
+		$this->access_token = ACCESS_TOKEN;
 	}
 
 	public function get_upload_token($uuid, $parent=""){

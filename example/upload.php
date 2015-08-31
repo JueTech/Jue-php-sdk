@@ -238,7 +238,7 @@
 <script src="/example/static/crypto-js/sha1.js"></script>
 
 <script type="text/javascript" src="/example/static/js/jquery.min.js"></script>
-<script type="text/javascript" src="/example/static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/example/static/qiniu/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/example/static/qiniu/js/plupload/plupload.full.min.js"></script>
 <script type="text/javascript" src="/example/static/qiniu/js/plupload/i18n/zh_CN.js"></script>
 <script type="text/javascript" src="/example/static/qiniu/js/ui.js"></script>

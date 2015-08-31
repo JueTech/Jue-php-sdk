@@ -1,13 +1,13 @@
 <?php
 /**
-* @package     /src/Jue/Storage/User
+* @package     /src/Jue/Depot/User
 * @author      xiaocao
 * @link        http://homeway.me/
 * @copyright   Copyright(c) 2015
-* @version     15.07.17
+* @version     15.08.31
 **/
  
-namespace Jue\Storage;
+namespace Jue\Depot;
 
 use Jue;
 use Jue\Config;
@@ -22,13 +22,11 @@ class User implements UserInterface{
 	private $access_token;
 
 	function __construct(){
-		$TokenClass = new Token();
-		$this->access_token = $TokenClass->get_access_token();
 	}
 
 	public function get_user_info($uuid){
 		$data = array(
-			"access_token" => $this->access_token,
+			"access_token" => ACCESS_TOKEN,
 			"uuid" => $uuid,
 		);
 		

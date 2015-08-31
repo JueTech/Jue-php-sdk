@@ -15,11 +15,13 @@ use Jue\Http\Error;
 use Jue\Http\Client;
 use Jue\Http\Request;
 use Jue\Http\Response;
+use Jue\Storage\Memory;
 
-class Auth implements AuthInterface {
-	
-	function __constrcut(){
+class Auth {
+	private $memory;
 
+	function __construct($access_key = Config::ACCESS_KEY, $access_secret = Config::ACCESS_SECRET){
+		$this->memory = new Memory("auth");
 	}
 
 	public function get_access_token($type = "authorization", $scope = ""){
@@ -91,10 +93,22 @@ class Auth implements AuthInterface {
 		return $this->do_result($response);
 	}
 
+	private function pick_up_token($body){
+        if($object = json_decode($body) ){
+        	$storage = array(
+        		"scope" => $object->scope,
+        		"access_token" => $object->access_token,
+        		"expires_in" => $object->expires_in,
+        		"token_type" => $object->token_type
+        	);
+        	if(array_key_exists("refresh_token", $object)) $storage["refresh_token"] = $object->refresh_token;
+        	$this->memory->store("auth", $storage, ($object->expires_in)-60);
+        }
+	}
+
 	private function do_result($response){
 		if($response->ok()){
-			$TokenClass = new Token();
-			$TokenClass->pick_up_token($response->body);
+			$this->pick_up_token($response->body);
 			return $response->body;
 		}
 		if ($response->json() != null) {

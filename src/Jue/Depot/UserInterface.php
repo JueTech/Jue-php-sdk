@@ -7,7 +7,7 @@
 * @version     15.07.17
 **/
 
-namespace Jue\Storage;
+namespace Jue\Depot;
 
 interface UserInterface{
 	public function get_user_info($uuid);

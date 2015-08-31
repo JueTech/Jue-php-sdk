@@ -7,7 +7,7 @@
 * @version     15.07.16
 **/
 
-require_once(__DIR__."/../lib/vendor/autoload.php");
+require_once(__DIR__."/../vendor/autoload.php");
 use Jue\Server;
 
 /**

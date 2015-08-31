@@ -7,7 +7,7 @@
 * @version     15.07.16
 **/
 
-require_once(__DIR__."/../lib/vendor/autoload.php");
+require_once(__DIR__."/../vendor/autoload.php");
 use Jue\Server;
 
 /**
@@ -17,21 +17,21 @@ $app_key = "testclient";
 $app_secret = "testpass";
 
 $server = new Server($app_key, $app_secret);
-$oauth = $server->auth()->get_access_token("client_credentials");
+$user = $server->get_user_info(1);
 
-//define variable
-$nid = 3;
-$uuid = "cf9dc994-a4e7-3ad6-bc54-41965b2a0dd7";
-
-$res_add_node = $server->node()->add_node($uuid, $nid, "hsdafaahahsadadasdada");
-$res_list_directory = $server->node()->list_directory($uuid, $nid);
-$res_list_file  = $server->node()->list_file($uuid, $nid);
-$res_list_node = $server->node()->list_node($uuid, $nid);
-$res_get_node = $server->node()->get_node($uuid, $nid);
-
-//get return data by echo json_encode
-echo json_encode($res_list_directory);
-//echo json_encode($res_list_file);
-//echo json_encode($res_list_node);
-//echo $res_get_node;
-//echo json_encode($res_add_node);
+if($user["code"] == 1000){
+	$user = $user["data"];
+	//$list_directory =  $server->list_directory($user["uuid"], $nid=$user["root"], $limit=rand(1, 500), $offset=0);
+	//$list_app_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 10), $offset=0);
+	//$list_root_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 500), $offset=0);
+	
+	//$list_node = $server->node->list_node($user["uuid"], $nid=2, $limit=rand(1, 10), $offset=0);
+	
+	//$reanme_node = $server->node->rename_node($user["uuid"], $nid=191, $name="妹子你叫什么");
+	//$add_node = $server->node->add_node($user["uuid"], $pid=2, $name="妹子你叫什么");
+	
+	//echo json_encode($list_node);
+}else{
+	//connect platform error
+	echo json_encode($user);
+}

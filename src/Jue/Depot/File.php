@@ -7,7 +7,7 @@
 * @version     15.07.17
 **/
  
-namespace Jue\Storage;
+namespace Jue\Depot;
 
 use Jue;
 use Jue\Config;
@@ -20,13 +20,12 @@ use Jue\Http\Response;
 class File implements FileInterface{
 
 	function __construct(){
-		$TokenClass = new Token();
-		$this->access_token = $TokenClass->get_access_token();
+		
 	}
 
 	public function share_file($uuid, $fid){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"fid" => $fid,
 		);
@@ -38,7 +37,7 @@ class File implements FileInterface{
 
 	public function delete_file($uuid, $fid){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"fid" => $fid,
 		);
@@ -50,7 +49,7 @@ class File implements FileInterface{
 
 	public function delete_files($uuid, $fids){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"fids" => $fids,
 		);
@@ -62,7 +61,7 @@ class File implements FileInterface{
 
 	public function move_file($uuid, $to_nid, $fid){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"fid" => $fid,
 			"to_nid" => $to_nid,
@@ -75,7 +74,7 @@ class File implements FileInterface{
 
 	public function move_files($uuid, $to_nid, $fids){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"to_nid" => $to_nid,
 			"fids" => $fids,
@@ -88,7 +87,7 @@ class File implements FileInterface{
 
 	public function get_file($uuid, $fid){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"fid" => $fid,
 		);
@@ -100,7 +99,7 @@ class File implements FileInterface{
 
 	public function rename_file($uuid, $name, $fid){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN, 
 			"uuid" => $uuid,
 			"fid" => $fid,
 			"name" => $name,

@@ -19,13 +19,23 @@ final class Request{
 
         if(array_key_exists("Content-Type", $headers)){
             if($headers["Content-Type"] == "application/x-www-form-urlencoded" || $headers["Content-Type"] == "application/x-www-form-urlencoded;charset=UTF-8"){
-                $res = "";
+                $result = "";
                 foreach ($body as $key => $value) {
-                    $res = $res.$key."=".$value."&";
+                    $result = $result.$key."=".$value."&";
                 }
-                $body = rtrim($res, "&");
+                $body = rtrim($result, "&");
+            }
+        }else{
+            $headers["Content-Type"] = "application/x-www-form-urlencoded";
+            if(is_array($body)){
+                $result = "";
+                foreach ($body as $key => $value) {
+                    $result = $result.$key."=".$value."&";
+                }
+                $body = rtrim($result, "&");
             }
         }
+
         $this->body = $body;
         $this->method = strtoupper($method);
         $this->url = $url;

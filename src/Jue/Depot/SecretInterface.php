@@ -7,7 +7,7 @@
 * @version     15.07.17
 **/
 
-namespace Jue\Storage;
+namespace Jue\Depot;
 
 interface SecretInterface{
 	public function connect_plat_form($user, $pass, $email, $portrait, $from, $token);
