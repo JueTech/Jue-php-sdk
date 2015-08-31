@@ -1,32 +1,20 @@
 <?php
 /**
-* @package     /example/test_node
+* @package     /example/file
 * @author      xiaocao
 * @link        http://homeway.me/
 * @copyright   Copyright(c) 2015
-* @version     15.07.16
+* @version     15.08.31
 **/
 
 require_once(__DIR__."/../vendor/autoload.php");
 use Jue\Server;
 
-$server = new Server();//default use config.php
+$server = new Server();
 $user = $server->get_user_info(1);
 
 if($user["code"] == 1000){
 	$user = $user["data"];
-
-	/*-------------------------------node-------------------------------*/
-
-	//$list_directory =  $server->list_directory($user["uuid"], $nid=$user["root"], $limit=rand(1, 500), $offset=0); echo json_encode($list_directory);
-	//$list_app_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 10), $offset=0); echo json_encode($list_app_directory);
-	//$list_root_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 500), $offset=0); echo json_encode($list_root_directory);
-	
-	//$list_node = $server->node->list_node($user["uuid"], $nid=2, $limit=rand(1, 10), $offset=0); echo json_encode($list_node);
-	
-	//$reanme_node = $server->node->rename_node($user["uuid"], $nid=191, $name="妹子你叫什么"); echo json_encode($reanme_node);
-	//$add_node = $server->node->add_node($user["uuid"], $pid=2, $name="妹子你叫什么"); echo json_encode($add_node);
-
 	/*-------------------------------file------------------------------*/
 
 	//$get_file =  $server->file->get_file($user["uuid"], $fid=3); echo json_encode($get_file);
@@ -37,8 +25,7 @@ if($user["code"] == 1000){
 	//$get_thumb_url = $server->file->get_thumb_url($user["uuid"], $id = 2222, "/2/w/8/h/8/q/10"); echo json_encode($get_thumb_url);
 	//$redirect_thumb = $server->file->redirect_thumb($user["uuid"], $id = 2222, "/2/w/1024/h/1024/q/100");
 	//$batch_get_thumb_url = $server->file->batch_get_thumb_url($user["uuid"], $fids = array(2222, 1376), "/2/w/1024/h/1024/q/90"); echo json_encode($batch_get_thumb_url);
-
-
+	
 }else{
 	//connect platform error
 	echo json_encode($user);
