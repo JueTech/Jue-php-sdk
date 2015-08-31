@@ -74,6 +74,16 @@ class Server{
 		return $user_info;
 	}
 
+	public function get_access_token(){
+		$this->memory->setCache("auth");
+		$this->memory->eraseExpired();
+		if(!$oauth = $this->memory->retrieve("auth")) {
+			$this->auth->get_access_token("password");
+			$oauth = $this->memory->retrieve("auth");
+		}
+		return $oauth;
+	}
+
 	/**
 	* @return 	class 	Auth()
 	*/

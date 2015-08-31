@@ -21,7 +21,8 @@ final class Request{
             if($headers["Content-Type"] == "application/x-www-form-urlencoded" || $headers["Content-Type"] == "application/x-www-form-urlencoded;charset=UTF-8"){
                 $result = "";
                 foreach ($body as $key => $value) {
-                    $result = $result.$key."=".$value."&";
+                    if(is_array($value)) $result = $result.$key."=".json_encode($value)."&";
+                    else $result = $result.$key."=".$value."&";
                 }
                 $body = rtrim($result, "&");
             }
@@ -30,7 +31,8 @@ final class Request{
             if(is_array($body)){
                 $result = "";
                 foreach ($body as $key => $value) {
-                    $result = $result.$key."=".$value."&";
+                    if(is_array($value)) $result = $result.$key."=".json_encode($value)."&";
+                    else $result = $result.$key."=".$value."&";
                 }
                 $body = rtrim($result, "&");
             }
