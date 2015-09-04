@@ -46,9 +46,11 @@ if($user["code"] == 1000){
 	//$get_user_info = $server->user->get_user_info($user["uuid"]); echo json_encode($get_user_info);
 
 	/*-------------------------------search------------------------------*/
-	//$search = $server->search->search($user["uuid"], $key=".jpg", $limit=25, $offset=0); echo json_encode($search);
-	$search_image = $server->search->search_image($user["uuid"], $format="/2/w/256/h/256/q/85/interlace/0" $limit=25, $offset=0); echo json_encode($search_image);
+	//$search = $server->search->search_key($user["uuid"], $key=".jpg", $limit=25, $offset=0); echo json_encode($search);
+	//$search_image = $server->search->search_image($user["uuid"], $format="/2/w/256/h/256/q/85/interlace/0" $limit=25, $offset=0); echo json_encode($search_image);
 	//$search_doc = $server->search->search_doc($user["uuid"], $limit=25, $offset=0); echo json_encode($search_doc);
+	//$search_video = $server->search->search_video($user["uuid"], $limit=25, $offset=0); echo json_encode($search_video);
+	//$search_source = $server->search->search_source($user["uuid"], $limit=25, $offset=0); echo json_encode($search_source);
 	
 
 }else{

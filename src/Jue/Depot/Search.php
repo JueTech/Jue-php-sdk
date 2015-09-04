@@ -20,7 +20,14 @@ class Search implements SearchInterface{
 		$this->memory = new Memory("search");
 	}
 
-	public function search($uuid, $key, $limit="", $offset=""){
+	/**
+	 * search file and node, support for waterfall, if post limit return waterfall data
+	 * @param	string	$key		=> 	search key
+	 * @param	int		$limit  	int 	=> select limit
+	 * @param	int 	$offset  	int 	=> select offset
+	 * @return 	array 	array("count", "node", "file") or waterfall array("count", "data")
+	*/
+	public function search_key($uuid, $key, $limit="", $offset=""){
 		$data = array(
 			"access_token" => ACCESS_TOKEN,
 			"uuid" => $uuid,
@@ -44,6 +51,12 @@ class Search implements SearchInterface{
 		return $this->do_result($response);
 	}
 
+	/**
+	 * search image file, with thumb, support for waterfall, if post limit return waterfall data
+	 * @param	int		$limit  	int 	=> select limit
+	 * @param	int 	$offset  	int 	=> select offset
+	 * @return 	array 	waterfall array("count", "data")
+	*/
 	public function search_image($uuid, $format="/2/w/256/h/256/q/85/interlace/0", $limit="", $offset=""){
 		$data = array(
 			"access_token" => ACCESS_TOKEN,
@@ -68,6 +81,12 @@ class Search implements SearchInterface{
 		return $this->do_result($response);
 	}
 
+	/**
+	 * search doc, ppt, excel, docx, pdf, pptx, number, pages file, with download url, support for waterfall, if post limit return waterfall data
+	 * @param	int		$limit  	int 	=> select limit
+	 * @param	int 	$offset  	int 	=> select offset
+	 * @return 	array 	waterfall array("count", "data")
+	*/
 	public function search_doc($uuid, $limit="", $offset=""){
 		$data = array(
 			"access_token" => ACCESS_TOKEN,
@@ -84,6 +103,64 @@ class Search implements SearchInterface{
 			if($body["code"] == 1000){
 				$this->memory->setCache("search-".$uuid);
 				$this->memory->store("{$uuid}_search_doc_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
+			}
+			return $body;
+		}
+
+		return $this->do_result($response);
+	}
+
+	/**
+	 * search video file, with video url, support for waterfall, if post limit return waterfall data
+	 * @param	int		$limit  	int 	=> select limit
+	 * @param	int 	$offset  	int 	=> select offset
+	 * @return 	array 	waterfall array("count", "data")
+	*/
+	public function search_video($uuid, $limit="", $offset=""){
+		$data = array(
+			"access_token" => ACCESS_TOKEN,
+			"uuid" => $uuid,
+			"limit" => $limit,
+			"offset" => $offset
+		);
+
+		$url = Config::API_RESOURCE."/search/video";
+		$response = Client::post($url, $data, array());
+		//save cache
+		if($response->ok()){
+			$body = json_decode($response->body, true);
+			if($body["code"] == 1000){
+				$this->memory->setCache("search-".$uuid);
+				$this->memory->store("{$uuid}_search_video_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
+			}
+			return $body;
+		}
+
+		return $this->do_result($response);
+	}
+
+	/**
+	 * search ai, ps file, with download url, support for waterfall, if post limit return waterfall data
+	 * @param	int		$limit  	int 	=> select limit
+	 * @param	int 	$offset  	int 	=> select offset
+	 * @return 	array 	waterfall array("count", "data")
+	*/
+	public function search_source($uuid, $limit="", $offset=""){
+		$data = array(
+			"access_token" => ACCESS_TOKEN,
+			"uuid" => $uuid,
+			"limit" => $limit,
+			"offset" => $offset
+		);
+
+		$url = Config::API_RESOURCE."/search/source";
+		$response = Client::post($url, $data, array());
+		//save cache
+		if($response->ok()){
+			$body = json_decode($response->body, true);
+			if($body["code"] == 1000){
+				$this->memory->setCache("search-".$uuid);
+				$this->memory->store("{$uuid}_search_source_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;
 		}
