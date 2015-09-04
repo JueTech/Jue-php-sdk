@@ -34,7 +34,7 @@ class Secret implements SecretInterface{
 			"token" => $token,
 		);
 		$url = Config::API_RESOURCE."/secret/connect_plat_form";
-		$response = Client::post($url, $data, array("Content-Type" => "application/x-www-form-urlencoded"));
+		$response = Client::post($url, $data, array());
 		return $this->do_result($response);
 	}
 
@@ -49,7 +49,7 @@ class Secret implements SecretInterface{
 		);
 
 		$url = Config::API_RESOURCE."/secret/portal";
-		$response = Client::post($url, $data, array("Content-Type" => "application/x-www-form-urlencoded"));
+		$response = Client::post($url, $data, array());
 		
 		//save user info to cache
 		if($response->ok()){

@@ -16,6 +16,7 @@ use Jue\Depot\Node;
 use Jue\Depot\User;
 use Jue\Depot\Secret;
 use Jue\Depot\Cloud;
+use Jue\Depot\Search;
 use Jue\Auth\Auth;
 use Jue\Http\Client;
 use Jue\Storage\Memory;
@@ -42,6 +43,7 @@ class Server{
 		$this->file = new File();
 		$this->node = new Node();
 		$this->user = new User();
+		$this->search = new Search();
 	}
 
 	/**

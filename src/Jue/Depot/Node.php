@@ -42,7 +42,7 @@ class Node implements NodeInterface{
 		if($response->ok()){
 			$body = json_decode($response->body, true);
 			if($body["code"] == 1000){
-				$this->memory->setCache("node".$uuid);
+				$this->memory->setCache("node-".$uuid);
 				$this->memory->store("{$uuid}_list_directory_{$nid}_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;
@@ -72,7 +72,7 @@ class Node implements NodeInterface{
 		if($response->ok()){
 			$body = json_decode($response->body, true);
 			if($body["code"] == 1000){
-				$this->memory->setCache("node".$uuid);
+				$this->memory->setCache("node-".$uuid);
 				$this->memory->store("{$uuid}_list_root_directory_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;
@@ -104,7 +104,7 @@ class Node implements NodeInterface{
 		if($response->ok()){
 			$body = json_decode($response->body, true);
 			if($body["code"] == 1000){
-				$this->memory->setCache("node".$uuid);
+				$this->memory->setCache("node-".$uuid);
 				$this->memory->store("{$uuid}_list_app_directory_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;
@@ -173,11 +173,31 @@ class Node implements NodeInterface{
 		if($response->ok()){
 			$body = json_decode($response->body, true);
 			if($body["code"] == 1000){
-				$this->memory->setCache("node".$uuid);
+				$this->memory->setCache("node-".$uuid);
 				$this->memory->store("{$uuid}_list_node_{$nid}_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;
 		}
+		return $this->do_result($response);
+	}
+
+	/**
+	* list app root node, with thumb url, support for waterfall 
+	* @param	string	$format  => thumb data like: "/2/w/128/h/128/q/85" => for more see qiniu.com: http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
+	* @param 	int 	$limit 	 => select limit, default 25
+	* @param 	int 	$offset  => select offset, default 0
+	*/
+	public function list_app_image_file_with_thumb($uuid, $format="", $limit="", $offset=""){
+		$data = array(
+			"client_id"	=> ACCESS_KEY,
+			"access_token" => ACCESS_TOKEN,
+			"uuid" => $uuid,
+			"format" => $format,
+			"limit" => $limit,
+			"offset" => $offset
+		);
+		$url = Config::API_RESOURCE."/node/list_app_image_file_with_thumb/?d=".$format;
+		$response = Client::post($url, $data, array());
 		return $this->do_result($response);
 	}
 
@@ -202,7 +222,7 @@ class Node implements NodeInterface{
 		if($response->ok()){
 			$body = json_decode($response->body, true);
 			if($body["code"] == 1000){
-				$this->memory->setCache("node".$uuid);
+				$this->memory->setCache("node-".$uuid);
 				$this->memory->store("{$uuid}_list_app_{$limit}_{$offset}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;

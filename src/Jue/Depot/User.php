@@ -11,17 +11,12 @@ namespace Jue\Depot;
 
 use Jue;
 use Jue\Config;
-use Jue\Http\Request;
 use Jue\Http\Client;
-use Jue\Http\Error;
-use Jue\Http\Response;
-use Jue\Auth\Token;
+use Jue\Storage\Memory;
 
 class User implements UserInterface{
-
-	private $access_token;
-
 	function __construct(){
+		$this->memory = new Memory("user");
 	}
 
 	public function get_user_info($uuid){

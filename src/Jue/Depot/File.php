@@ -58,7 +58,7 @@ class File implements FileInterface{
 		if($response->ok()){
 			$body = json_decode($response->body, true);
 			if($body["code"] == 1000){
-				$this->memory->setCache("file".$uuid);
+				$this->memory->setCache("file-".$uuid);
 				$this->memory->store("{$uuid}_get_file_{$fid}", $body, Config::EXPIRED_SHORT);
 			}
 			return $body;
@@ -132,8 +132,9 @@ class File implements FileInterface{
 		$data = array(
 			"access_token" => ACCESS_TOKEN,
 			"uuid" => $uuid,
+			"fid" => $fid,
 		);
-		$url = Config::API_RESOURCE."/file/get_thumb_url?id={$fid}&d={$format}";
+		$url = Config::API_RESOURCE."/file/get_thumb_url?d={$format}";
 		$response = Client::post($url, $data, array());
 		return $this->do_result($response);
 	}

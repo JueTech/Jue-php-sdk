@@ -26,6 +26,7 @@ if($user["code"] == 1000){
 	
 	//$reanme_node = $server->node->rename_node($user["uuid"], $nid=191, $name="妹子你叫什么"); echo json_encode($reanme_node);
 	//$add_node = $server->node->add_node($user["uuid"], $pid=2, $name="妹子你叫什么"); echo json_encode($add_node);
+	//$list_app_image_file_with_thumb = $server->node->list_app_image_file_with_thumb($user["uuid"], $limit=rand(1, 999), $offset=0, $format="/2/w/1024/h/1024/q/90"); echo json_encode($list_app_image_file_with_thumb);
 
 	/*-------------------------------file------------------------------*/
 
@@ -37,7 +38,18 @@ if($user["code"] == 1000){
 	//$get_thumb_url = $server->file->get_thumb_url($user["uuid"], $id = 2222, "/2/w/8/h/8/q/10"); echo json_encode($get_thumb_url);
 	//$redirect_thumb = $server->file->redirect_thumb($user["uuid"], $id = 2222, "/2/w/1024/h/1024/q/100");
 	//$batch_get_thumb_url = $server->file->batch_get_thumb_url($user["uuid"], $fids = array(2222, 1376), "/2/w/1024/h/1024/q/90"); echo json_encode($batch_get_thumb_url);
+	
+	/*-------------------------------cloud------------------------------*/
+	//$get_upload_token = $server->cloud->get_upload_token($user["uuid"], $save_to_root=false, $parent=""); echo json_encode($get_upload_token); //default parent is app root
 
+	/*-------------------------------user------------------------------*/
+	//$get_user_info = $server->user->get_user_info($user["uuid"]); echo json_encode($get_user_info);
+
+	/*-------------------------------search------------------------------*/
+	//$search = $server->search->search($user["uuid"], $key=".jpg", $limit=25, $offset=0); echo json_encode($search);
+	$search_image = $server->search->search_image($user["uuid"], $format="/2/w/256/h/256/q/85/interlace/0" $limit=25, $offset=0); echo json_encode($search_image);
+	//$search_doc = $server->search->search_doc($user["uuid"], $limit=25, $offset=0); echo json_encode($search_doc);
+	
 
 }else{
 	//connect platform error

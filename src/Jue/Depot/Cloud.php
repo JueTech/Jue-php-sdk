@@ -17,15 +17,22 @@ use Jue\Storage\Memory;
 
 class Cloud implements CloudInterface{
 	function __construct(){
-		$this->access_token = ACCESS_TOKEN;
+		$this->memory = new Memory("cloud");
 	}
 
-	public function get_upload_token($uuid, $parent=""){
+	/**
+	* qiniu upload token, return array("param", "upload_token"), param = ase 128 encryption
+	* @param $parnet 			int 	=> 	save to node id
+	* @param $save_to_root 		bool	=> 	save to root, if save_to_root, then $parent is no use
+	* @return 	array("param", "upload_token")  => param => aes-128 encryption
+	*/
+	public function get_upload_token($uuid, $save_to_root=false, $parent=""){
 		$data = array(
-			"access_token" => $this->access_token, 
+			"access_token" => ACCESS_TOKEN,
 			"client_id" => Config::ACCESS_KEY,
 			"uuid" => $uuid,
-			"parent" => $parent
+			"parent" => $parent,
+			"save_to_root" => $save_to_root
 		);
 		$url = Config::API_RESOURCE."/cloud/get_upload_token";
 		$response = Client::post($url, $data, array("Content-Type" => "application/x-www-form-urlencoded"));
