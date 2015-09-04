@@ -30,57 +30,67 @@ Start new server, get access token.
 
 ```
 <?php
-require_once(__DIR__."/../lib/vendor/autoload.php");
+/**
+* @package     /example/test_node
+* @author      xiaocao
+* @link        http://homeway.me/
+* @copyright   Copyright(c) 2015
+* @version     15.09.04
+**/
+
+require_once(__DIR__."/../vendor/autoload.php");
 use Jue\Server;
 
-/**
-* 
-*/
-$app_key = "test_client";
-$app_secret = "testpass";
+$server = new Server();//default use config.php
+$user = $server->get_user_info( $_SESSION("user_id"));//connect platform
 
-$server = new Server($app_key, $app_secret);
-$token = $server->auth()->get_access_token("client_credentials");
+if($user["code"] == 1000){
+	$user = $user["data"];
 
-```
+	/*-------------------------------node-------------------------------*/
 
-Get User info, for more api information please see [http://api.jue.so/doc/](http://api.jue.so/doc/)
+	$list_directory =  $server->list_directory($user["uuid"], $nid=$user["root"], $limit=rand(1, 500), $offset=0); echo json_encode($list_directory);
+	$list_app_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 10), $offset=0); echo json_encode($list_app_directory);
+	$list_root_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 500), $offset=0); echo json_encode($list_root_directory);
+	
+	$list_node = $server->node->list_node($user["uuid"], $nid=2, $limit=rand(1, 10), $offset=0); echo json_encode($list_node);
+	
+	$reanme_node = $server->node->rename_node($user["uuid"], $nid=191, $name="妹子你叫什么"); echo json_encode($reanme_node);
+	$add_node = $server->node->add_node($user["uuid"], $pid=2, $name="妹子你叫什么"); echo json_encode($add_node);
+	$list_app_image_file_with_thumb = $server->node->list_app_image_file_with_thumb($user["uuid"], $limit=rand(1, 999), $offset=0, $format="/2/w/1024/h/1024/q/90"); echo json_encode($list_app_image_file_with_thumb);
 
-```
-//get user info
-$res_user_info = $server->user()->get_user_info(access_token, $uuid);
-echo json_encode($res_user_info);
+	/*-------------------------------file------------------------------*/
+
+	$get_file =  $server->file->get_file($user["uuid"], $fid=3); echo json_encode($get_file);
+	$copy_files =  $server->file->copy_files($user["uuid"], $fids=json_encode(array(2220, 1241)), $to_nid=191); echo json_encode($copy_files);
+	$rename_file =  $server->file->rename_file($user["uuid"], $fid=2220, $name="这是新名字"); echo json_encode($rename_file);
+	$batch_move_to_root = $server->file->batch_move_to_root($user["uuid"], $ids = json_encode(array(2222, 58))); echo json_encode($batch_move_to_root);
+	$batch_move_to_node = $server->file->batch_move_to_node($user["uuid"], $ids = json_encode(array(array(2222, 2220), array())), $to_nid = 3); echo json_encode($batch_move_to_node);
+	$get_thumb_url = $server->file->get_thumb_url($user["uuid"], $id = 2222, "/2/w/8/h/8/q/10"); echo json_encode($get_thumb_url);
+	$redirect_thumb = $server->file->redirect_thumb($user["uuid"], $id = 2222, "/2/w/1024/h/1024/q/100");
+	$batch_get_thumb_url = $server->file->batch_get_thumb_url($user["uuid"], $fids = array(2222, 1376), "/2/w/1024/h/1024/q/90"); echo json_encode($batch_get_thumb_url);
+	
+	/*-------------------------------cloud------------------------------*/
+	$get_upload_token = $server->cloud->get_upload_token($user["uuid"], $save_to_root=false, $parent=""); echo json_encode($get_upload_token); //default parent is app root
+
+	/*-------------------------------user------------------------------*/
+	$get_user_info = $server->user->get_user_info($user["uuid"]); echo json_encode($get_user_info);
+
+	/*-------------------------------search------------------------------*/
+	$search = $server->search->search_key($user["uuid"], $key=".jpg", $limit=25, $offset=0); echo json_encode($search);
+	$search_image = $server->search->search_image($user["uuid"], $format="/2/w/256/h/256/q/85/interlace/0" $limit=25, $offset=0); echo json_encode($search_image);
+	$search_doc = $server->search->search_doc($user["uuid"], $limit=25, $offset=0); echo json_encode($search_doc);
+	$search_video = $server->search->search_video($user["uuid"], $limit=25, $offset=0); echo json_encode($search_video);
+	$search_source = $server->search->search_source($user["uuid"], $limit=25, $offset=0); echo json_encode($search_source);
+	
+}else{
+	//connect platform error
+	echo json_encode($user);
+}
+
 ```
 
 Get Node info, for more api information please see [http://api.jue.so/doc/](http://api.jue.so/doc/)
-
-```
-$res_list_directory = $server->node()->list_directory($uuid, $nid);
-$res_list_file  = $server->node()->list_file($uuid, $nid);
-$res_list_node = $server->node()->list_node($uuid, $nid);
-$res_get_node = $server->node()->get_node($uuid, $nid);
-
-//return json format data
-echo json_encode($res_list_directory);
-
-```
-
-Get file resource, for more api information please see [http://api.jue.so/doc/](http://api.jue.so/doc/)
-
-```
-$res_share_file = $server->file()->share_file($uuid, $fid);
-$res_delete_file  = $server->file()->delete_file($uuid, 12345);
-$res_delete_files = $server->file()->delete_files($uuid, "121,122,123,124,125,126,127,128");
-
-$to_node_id = 3;
-$res_move_file = $server->file()->move_file($uuid, $to_node_id, $fid);
-$res_move_files = $server->file()->move_files($uuid, $to_node_id, "121,122,123,124,125,126,127,128");
-$res_get_file = $server->file()->get_file($uuid, $fid);
-$res_rename_file = $server->file()->rename_file($uuid, "new_name", $fid);
-
-//return json format data
-echo json_encode($res_get_file);
-```
 
 
 return json format data. 
