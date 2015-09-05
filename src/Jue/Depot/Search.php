@@ -77,7 +77,6 @@ class Search implements SearchInterface{
 			}
 			return $body;
 		}
-
 		return $this->do_result($response);
 	}
 

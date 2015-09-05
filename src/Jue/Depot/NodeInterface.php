@@ -73,6 +73,14 @@ interface NodeInterface{
 	 * @return 	array 	for select all => array("count", "node", "file", "current") || for waterfall => array("count", "data", "app")
 	 */
 	public function list_app();
+
+	/**
+	* list app root node thumb url, support for waterfall 
+	* @param	string	$format  => thumb data like: "/2/w/128/h/128/q/85" => for more see qiniu.com: http://developer.qiniu.com/docs/v6/api/reference/fop/image/imageview2.html
+	* @param 	int 	$limit 	 => select limit, default 25
+	* @param 	int 	$offset  => select offset, default 0
+	*/
+	public function list_app_image_file_with_thumb($uuid, $format="", $limit="", $offset="");
 	
 	public function list_file($uuid, $nid);
 	public function get_node($uuid, $nid);
