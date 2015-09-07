@@ -20,7 +20,7 @@ class Memory {
    *
    * @var string
    */
-  private $_cachepath = __DIR__.'/cache/';
+  private $_cachepath = './cache/';
 
   /**
    * The name of the default cache file
@@ -43,6 +43,7 @@ class Memory {
    * @return void
    */
   public function __construct($config = null) {
+    $this->_cachename = __DIR__."/cache/";
     if (true === isset($config)) {
       if (is_string($config)) {
         $this->setCache($config);
