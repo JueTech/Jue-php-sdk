@@ -36,7 +36,6 @@ class Server{
 		$oauth = $this->memory->retrieve("auth");
     
 		if($oauth == NULL){
-			//throw new Exceptions\WrongTypeException("oauth", $oauth, "array", $message = 'no oauth', $code = 0);
 			$this->auth->get_access_token("password");
 			$oauth = $this->memory->retrieve("auth");
 		}
@@ -102,6 +101,7 @@ class Server{
 
 	/**
 	* @return 	class 	File()
+	* @link http://api.jue.so/doc/#api-Resource_File
 	*/
 	public function get_file() {
 		if(!isset($this->file)) $this->file = new File();
@@ -110,6 +110,7 @@ class Server{
 
 	/**
 	* @return 	class 	Node()
+	* @link http://api.jue.so/doc/#api-Resource_Node
 	*/
 	public function get_node() {
 		if(!isset($this->node)) $this->node = new Node();
@@ -126,6 +127,7 @@ class Server{
 
 	/**
 	* @return 	class 	Secret()
+	* @link http://api.jue.so/doc/#api-Resource_Secret
 	*/
 	public function get_secret() {
 		if(!isset($this->secret)) $this->secret = new Secret();
@@ -134,6 +136,7 @@ class Server{
 
 	/**
 	* @return 	class 	Cloud()
+	* @link http://api.jue.so/doc/#api-Resource_Cloud
 	*/
 	public function get_cloud() {
 		if(!isset($this->cloud)) $this->cloud = new Cloud();
@@ -142,6 +145,7 @@ class Server{
 
 	/**
 	* @return 	class 	Memory()
+	* @link https://github.com/cosenary/Simple-PHP-Cache
 	*/
 	public function get_cache($param) {
 		return new Memory($param);

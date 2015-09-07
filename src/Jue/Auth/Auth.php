@@ -16,6 +16,7 @@ use Jue\Http\Client;
 use Jue\Http\Request;
 use Jue\Http\Response;
 use Jue\Storage\Memory;
+use Jue\Exceptions;
 
 class Auth {
 	private $memory;
@@ -45,6 +46,7 @@ class Auth {
 				break;
 
 			default:
+				throw new Exceptions\JueOauthException($scop = "Auth", $type = "Oauth", $object = $type, $expected = "string", $message = "Auth.php:49 => Unsupported Grant Type", $code = 1058);
 				return array("code" => 1058, "error" => "Unsupported Grant Type", "error_description" => "Grant type \"client_credentialss\" not supported");
 				break;
 		}
@@ -62,6 +64,7 @@ class Auth {
 				Client::redirect($url);
 				break;
 			default:
+				throw new Exceptions\JueOauthException($scop = "Auth", $type = "Oauth", $object = $type, $expected = "string", $message = "Auth.php:68 => Unsupported Grant Type", $code = 1058);
 				return array("code" => 1058, "error" => "Unsupported Grant Type", "error_description" => "Grant type \"client_credentialss\" not supported");
 				break;
 		}
@@ -103,6 +106,8 @@ class Auth {
         	);
         	if(array_key_exists("refresh_token", $object)) $storage["refresh_token"] = $object->refresh_token;
         	$this->memory->store("auth", $storage, ($object->expires_in)-60);
+        }else{
+        	throw new Exceptions\JueOauthException($scop = "Auth", $type = "Oauth", $object = $body, $expected = "object", $message = "Auth.php:110 get access_token error.");
         }
 	}
 

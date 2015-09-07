@@ -20,8 +20,18 @@ class JueException extends \Exception{
 	
 	protected $logger = NULL;
 
-	function __construct($message, $object){
+	function __construct($message, $code){
 		$this->logger = new Logger();
-		$this->logger->log($message, Logger::ERROR);
+
+		switch($code){
+			case $code >= 1050 && $code <= 1060:
+				$type = Logger::WARNING;
+				break;
+			default:
+				$type = Logger::ERROR;
+				break;
+		}
+
+		$this->logger->log($message, $type);
 	}
 }

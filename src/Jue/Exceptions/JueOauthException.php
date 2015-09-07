@@ -11,23 +11,27 @@ namespace Jue\Exceptions;
 use Jue\Logger;
 
 
-class OauthException extends JueException{
+class JueOauthException extends JueException{
 
 	private $message_type = 'DEBUG';
 
-	function __construct($object_name, $object, $expected, $message = '', $code = 0){
+	function __construct($scop, $object_name, $object, $expected, $message = "", $code = 0){
 		$received_type = gettype($object);
-        $message = "Wrong Type: $object_name, Expected $expected, received $received_type";
+        $message = "Wrong Type: $object_name, Scope: $scop, Expected: $expected, Received: $received_type, Message: $message \n";
         $this->debug_dump($message, $object);
 
         parent::__construct($message, $code);
 	}
 
 	private function debug_dump(&$message, &$object) {
-		if ($this->message_type == 'DEBUG') {
-			ob_start();
-			var_dump($object);
-			$message = $message . " Debug Info: " . ob_get_clean();
+		switch($this->message_type){
+			case "DEBUG":
+				ob_start();
+				print_r($object);
+				$message = $message . "Debug Info: \n" . ob_get_clean();
+				break;
+			default:
+				break;
 		}
 	}
 }

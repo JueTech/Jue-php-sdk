@@ -15,6 +15,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 }
 
 final class Config{
+	/*
 	const EXPIRED_LONG 	= 3600;
 	const EXPIRED_SHORT = 60;
 	const SDK_VERSION 	= "15.07.09";
@@ -27,5 +28,17 @@ final class Config{
 	const REDIRCET_URI  = "http://homeway.me/";
 	const USER_NAME 	= "user";
 	const USER_PASS		= "pass";
+	*/
+	const EXPIRED_LONG 	= 3600;
+	const EXPIRED_SHORT = 60;
+	const SDK_VERSION 	= "15.07.09";
+	const ACCESS_KEY  	= "jue.weixin";
+	const ACCESS_SECRET = "jue.weixin";
+	const API_HOST 		= "localhost:8085";
+	const API_OAUTH 	= "http://localhost:8085/oauth2/";
+	const API_RESOURCE 	= "http://localhost:8085/v2";
 
+	const REDIRCET_URI  = "http://homeway.me/";
+	const USER_NAME 	= "user";
+	const USER_PASS		= "pass";
 }
