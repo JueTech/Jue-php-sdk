@@ -10,17 +10,17 @@
 
 **Install composer**
 
-> $curl -sS https://getcomposer.org/installer | php
+> $ curl -sS https://getcomposer.org/installer | php
 
 or 
 
-> $php -r "readfile('https://getcomposer.org/installer');" | php
+> $ php -r "readfile('https://getcomposer.org/installer');" | php
 
 Composer detail see [https://getcomposer.org/doc/00-intro.md](https://getcomposer.org/doc/00-intro.md)
 
 **Install SDK**
 
-> $ composer install
+> $ composer install grasses/jue-php-sdk
 
 <br><hr>
 
