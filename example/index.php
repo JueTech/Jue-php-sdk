@@ -18,9 +18,9 @@ if($user["code"] == 1000){
 
 	/*-------------------------------node-------------------------------*/
 
-	//$list_directory =  $server->list_directory($user["uuid"], $nid=$user["root"], $limit=rand(1, 500), $offset=0); echo json_encode($list_directory);
-	//$list_app_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 10), $offset=0); echo json_encode($list_app_directory);
-	//$list_root_directory =  $server->list_directory($user["uuid"], $limit=rand(1, 500), $offset=0); echo json_encode($list_root_directory);
+	//$list_directory =  $server->node->list_directory($user["uuid"], $nid=$user["root"], $limit=500, $offset=0); echo json_encode($list_directory);
+	//$list_app_directory =  $server->node->list_app_directory($user["uuid"], $limit=rand(1, 10), $offset=0); echo json_encode($list_app_directory);
+	//$list_root_directory =  $server->node->list_root_directory($user["uuid"], $limit=rand(1, 500), $offset=0); echo json_encode($list_root_directory);
 	
 	//$list_node = $server->node->list_node($user["uuid"], $nid=2, $limit=rand(1, 10), $offset=0); echo json_encode($list_node);
 	
@@ -29,7 +29,10 @@ if($user["code"] == 1000){
 	//$list_app_image_file_with_thumb = $server->node->list_app_image_file_with_thumb($user["uuid"], $limit=rand(1, 999), $offset=0, $format="/2/w/1024/h/1024/q/90"); echo json_encode($list_app_image_file_with_thumb);
 
 	/*-------------------------------file------------------------------*/
-
+	
+	//$copy_files_to_app = $server->file->copy_files_to_app($user["uuid"], $fids = array(3,4,6,2576)); echo json_encode($copy_files_to_app);
+	//$delete_files = $server->file->delete_files($user["uuid"], $fids = array(2576)); echo json_encode($delete_files);
+	//$move_files_to_app = $server->file->move_files_to_app($user["uuid"], $fids = array(2576)); echo json_encode($move_files_to_app);
 	//$get_file =  $server->file->get_file($user["uuid"], $fid=3); echo json_encode($get_file);
 	//$copy_files =  $server->file->copy_files($user["uuid"], $fids=json_encode(array(2220, 1241)), $to_nid=191); echo json_encode($copy_files);
 	//$rename_file =  $server->file->rename_file($user["uuid"], $fid=2220, $name="这是新名字"); echo json_encode($rename_file);
@@ -47,12 +50,11 @@ if($user["code"] == 1000){
 
 	/*-------------------------------search------------------------------*/
 	//$search = $server->search->search_key($user["uuid"], $key=".jpg", $limit=25, $offset=0); echo json_encode($search);
-	//$search_image = $server->search->search_image($user["uuid"], $format="/2/w/256/h/256/q/85/interlace/0" $limit=25, $offset=0); echo json_encode($search_image);
-	//$search_doc = $server->search->search_doc($user["uuid"], $limit=25, $offset=0); echo json_encode($search_doc);
+	//$search_image = $server->search->search_image($user["uuid"], $format="/2/w/256/h/256/q/85/interlace/0", $limit=25, $offset=0); echo json_encode($search_image);
+	//$search_doc = $server->search->search_doc($user["uuid"], $limit=10, $offset=0); echo json_encode($search_doc);
 	//$search_video = $server->search->search_video($user["uuid"], $limit=25, $offset=0); echo json_encode($search_video);
 	//$search_source = $server->search->search_source($user["uuid"], $limit=25, $offset=0); echo json_encode($search_source);
 	
-
 }else{
 	//connect platform error
 	echo json_encode($user);

@@ -20,6 +20,9 @@ use Jue\Depot\Search;
 use Jue\Auth\Auth;
 use Jue\Http\Client;
 use Jue\Storage\Memory;
+use Jue\Exceptions;
+
+ini_set('display_errors', 1);error_reporting(E_ALL);
 
 class Server{
 	function __construct($access_key = Config::ACCESS_KEY, $access_secret = Config::ACCESS_SECRET) {
@@ -30,11 +33,14 @@ class Server{
 		$this->memory = new Memory("auth");
 		
 		$this->memory->eraseExpired();
-		if(!$oauth = $this->memory->retrieve("auth")) {
+		$oauth = $this->memory->retrieve("auth");
+    
+		if($oauth == NULL){
+			//throw new Exceptions\WrongTypeException("oauth", $oauth, "array", $message = 'no oauth', $code = 0);
 			$this->auth->get_access_token("password");
 			$oauth = $this->memory->retrieve("auth");
 		}
-		
+
 		define("ACCESS_TOKEN", $oauth["access_token"]);
 
 		//start new class

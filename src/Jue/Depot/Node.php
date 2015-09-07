@@ -47,7 +47,6 @@ class Node implements NodeInterface{
 			}
 			return $body;
 		}
-
 		return $this->do_result($response);
 	}
 

@@ -214,6 +214,24 @@ class File implements FileInterface{
 		return $this->do_result($response);
 	}
 
+	/**
+	* copy files to app root, do not check capacity
+	* @param  $fids array  to move file id, [2,3,4,5,6,7,8] type in file or mask
+	* @return array, success file id => array(id) => array(2, 3, 4, 5, 6)
+	*/
+	public function copy_files_to_app($uuid, array $fids = array()){
+		$data = array(
+			"access_token" => ACCESS_TOKEN,
+			"client_id" => Config::ACCESS_KEY,
+			"uuid" => $uuid,
+			"fids" => $fids,
+		);
+
+		$url = Config::API_RESOURCE."/file/copy_files_to_app";
+		$response = Client::post($url, $data, array());
+		return $this->do_result($response);
+	}
+
 	public function move_file($uuid, $to_nid, $fid){
 		$data = array(
 			"access_token" => ACCESS_TOKEN, 

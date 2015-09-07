@@ -86,4 +86,11 @@ interface FileInterface{
 	*/
 	public function move_files_to_app($uuid, array $fids = array());
 
+	/**
+	* copy files to app root, do not check capacity
+	* @param  $fids array  to move file id, [2,3,4,5,6,7,8] type in file or mask
+	* @return array, success file id => array(id) => array(2, 3, 4, 5, 6)
+	*/
+	public function copy_files_to_app($uuid, array $fids = array());
+
 }

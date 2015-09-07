@@ -1,0 +1,1 @@
+{"auth":{"time":1441647020,"expire":3540,"data":"a:5:{s:5:\"scope\";s:8:\"userinfo\";s:12:\"access_token\";s:40:\"5f02cd346b7d1be44177d74238e756dda884b8b2\";s:10:\"expires_in\";i:3600;s:10:\"token_type\";s:6:\"Bearer\";s:13:\"refresh_token\";s:40:\"c0d73ea94b8e0f4cdd15b1d067be53e8fb78b856\";}"}}

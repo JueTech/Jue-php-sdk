@@ -43,7 +43,7 @@ class Memory {
    * @return void
    */
   public function __construct($config = null) {
-    $this->_cachename = __DIR__."/cache/";
+    $this->_cachepath = __DIR__."/cache/";
     if (true === isset($config)) {
       if (is_string($config)) {
         $this->setCache($config);
@@ -247,7 +247,7 @@ class Memory {
       throw new Exception('Unable to create cache directory ' . $this->getCachePath());
     } elseif (!is_readable($this->getCachePath()) || !is_writable($this->getCachePath())) {
       if (!chmod($this->getCachePath(), 0775)) {
-        throw new Exception($this->getCachePath() . ' must be readable and writeable');
+        throw new \Exception($this->getCachePath() . ' must be readable and writeable');
       }
     }
     return true;

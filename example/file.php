@@ -16,7 +16,10 @@ $user = $server->get_user_info(1);
 if($user["code"] == 1000){
 	$user = $user["data"];
 	/*-------------------------------file------------------------------*/
-
+	
+	//$copy_files_to_app = $server->file->copy_files_to_app($user["uuid"], $fids = array(3,4,6,2576)); echo json_encode($copy_files_to_app);
+	//$delete_files = $server->file->delete_files($user["uuid"], $fids = array(2576)); echo json_encode($delete_files);
+	//$move_files_to_app = $server->file->move_files_to_app($user["uuid"], $fids = array(2576)); echo json_encode($move_files_to_app);
 	//$get_file =  $server->file->get_file($user["uuid"], $fid=3); echo json_encode($get_file);
 	//$copy_files =  $server->file->copy_files($user["uuid"], $fids=json_encode(array(2220, 1241)), $to_nid=191); echo json_encode($copy_files);
 	//$rename_file =  $server->file->rename_file($user["uuid"], $fid=2220, $name="这是新名字"); echo json_encode($rename_file);

@@ -1,5 +1,4 @@
 <?php
-
 /**
 * @package     Logger
 * @author      xiaocao
@@ -34,6 +33,9 @@ class Logger {
     */
     protected $fileHandle = NULL;
 
+
+    protected $filePath = NULL;
+    
     /**
     * The time format to show in the log.
     *
@@ -54,9 +56,14 @@ class Logger {
     *
     * @param string $logfile The path to the loggable file.
     */
-    public function __construct($logfile) {
-        if($this->fileHandle == NULL){
-            $this->openLogFile($logfile);
+    public function __construct($logfile = "") {
+        $this->filePath = __DIR__."/log/";
+
+        if($logfile){
+            $this->filePath = $this->filePath.$logfile;
+            $this->openLogFile($this->filePath);
+        }else{
+            $this->openLogFile($this->filePath.date("Y-m-d").".log");
         }
 
         /*
