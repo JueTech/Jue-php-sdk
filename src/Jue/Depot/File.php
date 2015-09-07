@@ -196,6 +196,24 @@ class File implements FileInterface{
 		return $this->do_result($response);
 	}
 
+	/**
+	* move files to app root
+	* @param  $fids array  to move file id, [2,3,4,5,6,7,8] type in file or mask
+	* @return array array(true/false)
+	*/
+	public function move_files_to_app($uuid, array $fids = array()){
+		$data = array(
+			"access_token" => ACCESS_TOKEN,
+			"client_id" => Config::ACCESS_KEY,
+			"uuid" => $uuid,
+			"fids" => $fids,
+		);
+
+		$url = Config::API_RESOURCE."/file/move_files_to_app";
+		$response = Client::post($url, $data, array());
+		return $this->do_result($response);
+	}
+
 	public function move_file($uuid, $to_nid, $fid){
 		$data = array(
 			"access_token" => ACCESS_TOKEN, 

@@ -72,4 +72,18 @@ interface FileInterface{
 	*/
 	public function redirect_thumb($uuid, $fid, $format="/2/w/128/h/128/q/85");
 
+	/**
+	* delete file directly, no limit file type
+	* @param $fids 	array 	delete file id in array
+	* @return 	array 	array(true/false)
+	*/
+	public function delete_files($uuid, array $fids = array());
+
+	/**
+	* move files to app root
+	* @param  $fids array  to move file id, [2,3,4,5,6,7,8] type in file or mask
+	* @return array array(true/false)
+	*/
+	public function move_files_to_app($uuid, array $fids = array());
+
 }
